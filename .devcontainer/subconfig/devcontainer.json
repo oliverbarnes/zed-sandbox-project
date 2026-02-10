@@ -1,0 +1,4 @@
+{
+    "name": "zed-sandbox-subfolder",
+    "image": "mcr.microsoft.com/devcontainers/base:debian"
+}

@@ -1,0 +1,7 @@
+services:
+  dev:
+    image: debian:bookworm-slim
+    # cpuset: "0"
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity

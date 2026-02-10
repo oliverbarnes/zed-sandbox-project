@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Sample Bash script to trigger INFO and HINT level diagnostics
+# Requires bash-language-server with ShellCheck integration
+
+# 1. SC2086 - Double quote to prevent globbing and word splitting (INFO)
+filename=$1
+cat "$filename"  # INFO: Double quote to prevent globbing and word splitting
+
+# 2. SC2034 - Unused variable (INFO)
+# unused_variable="I am never used"  # INFO: unused_variable appears unused (removed)
+
+# 3. SC2155 - Declare and assign separately (INFO)
+result=$(some_command)  # INFO: Declare and assign separately to avoid masking return values
+export result
+
+# 4. SC2164 - Use cd ... || exit (INFO)
+cd /some/directory || exit  # INFO: Use 'cd ... || exit' in case cd fails
+
+# 5. SC2129 - Consider using { cmd1; cmd2; } >> file (INFO)
+{
+    echo "line 1"
+    echo "line 2"
+} >> logfile
+
+# 6. SC2046 - Quote to prevent word splitting (INFO)
+files=$(ls ./*.txt)
+rm "$files"
+
+# 7. SC2002 - Useless cat (INFO)
+grep "pattern" file.txt
+
+# 8. SC2116 - Useless echo (INFO)
+variable="example"
+result=$variable  # INFO: Useless echo (removed useless echo)
+
+# 9. SC2162 - read without -r (INFO)
+read -r _input  # INFO: read without -r will mangle backslashes (prefixed with _ to indicate intentional non-use)
+
+# 10. SC2059 - Don't use variables in printf format (INFO)
+printf "Hello %s" "World"  # INFO: Don't use variables in the printf format string
+
+# 11. SC2103 - Use pushd/popd or cd ... || exit (INFO)
+cd subdir || exit
+do_something
+cd .. || exit  # INFO: Use a ( subshell ) to avoid cd side effects
+
+# 12. SC2004 - $/${} unnecessary on arithmetic variables (INFO)
+count=5
+result=$((count + 1))  # INFO: $/${} is unnecessary on arithmetic variables
+
+# 13. SC2236 - Use -n instead of ! -z (INFO)
+if [ ! -z "$var" ]; then  # INFO: Use -n instead of ! -z
+    echo "not empty"
+fi
+
+# 14. SC2088 - Tilde does not expand in quotes (INFO)
+_path="$HOME/documents"  # INFO: Tilde does not expand in quotes (use $HOME instead, prefixed with _ to indicate intentional non-use)
