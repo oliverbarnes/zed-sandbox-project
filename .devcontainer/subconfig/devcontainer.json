@@ -1,4 +1,5 @@
 {
-    "name": "zed-sandbox-subfolder",
-    "image": "mcr.microsoft.com/devcontainers/base:debian"
+  "name": "zed-sandbox-subfolder",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "postCreateCommand": "git config --global --add safe.directory /workspaces/zed-sandbox-project",
 }

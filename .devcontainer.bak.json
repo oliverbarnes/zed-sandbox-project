@@ -1,9 +1,0 @@
-{
-    "name": "zed-sandbox-root",
-    "image": "mcr.microsoft.com/devcontainers/base:debian",
-    "customizations": {
-        "vscode": {
-            "extensions": []
-        }
-    }
-}

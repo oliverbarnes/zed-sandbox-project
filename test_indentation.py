@@ -15,11 +15,6 @@ def greet(name):
         print("Hello, stranger!")
 
 
-def hello_world():
-    """Print a hello world message."""
-    print("Hello, World!")
-
-
 def calculate_sum(numbers):
     """Calculate the sum of a list of numbers."""
     unused_var = 42
