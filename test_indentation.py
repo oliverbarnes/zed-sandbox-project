@@ -5,14 +5,13 @@ import os
 import sys
 
 
-def greet(name):
-    """Greet someone by name."""
+def greet(name, greeting="Hello"):
+    """Greet someone by name with a custom greeting."""
     if name:
-        print(f"Hello, {name}!")
-        print(undefined_variable)
-
+        print(f"{greeting}, {name}!")
+        print(f"Welcome aboard!")
     else:
-        print("Hello, stranger!")
+        print(f"{greeting}, stranger!")
 
 
 def calculate_sum(numbers):
